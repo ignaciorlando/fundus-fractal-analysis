@@ -13,6 +13,11 @@ my_root_position = pwd;
 
 % add folders to path
 addpath(genpath(fullfile(my_root_position, 'boxcount'))) ;
+addpath(genpath(fullfile(my_root_position, 'data_organization'))) ;
+addpath(genpath(fullfile(my_root_position, 'Util'))) ;
+
+% add configuration files
+addpath(genpath(fullfile(my_root_position, 'configuration_files'))) ;
 
 clear
 clc
