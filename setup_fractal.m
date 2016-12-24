@@ -15,6 +15,7 @@ my_root_position = pwd;
 addpath(genpath(fullfile(my_root_position, 'boxcount'))) ;
 addpath(genpath(fullfile(my_root_position, 'data_organization'))) ;
 addpath(genpath(fullfile(my_root_position, 'Util'))) ;
+addpath(genpath(fullfile(my_root_position, 'feature-extraction')));
 
 % add configuration files
 addpath(genpath(fullfile(my_root_position, 'configuration_files'))) ;
