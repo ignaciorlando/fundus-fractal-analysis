@@ -31,4 +31,9 @@ for i = 1 : length(segmentation_filenames)
 end
 
 % normalize to zero mean and unit variance
-standardized_features = bsxfun(@rdivide, bsxfun(@minus, features, mean(features)), std(features)+eps);
+features = bsxfun(@rdivide, bsxfun(@minus, features, mean(features)), std(features)+eps);
+
+%% save them to be used later
+output_folder = fullfile(dataset_path, dataset_name, 'fractal-features');
+mkdir(output_folder);
+save(fullfile(output_folder, 'features.mat'), 'features');
