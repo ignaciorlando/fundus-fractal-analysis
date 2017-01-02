@@ -102,7 +102,7 @@ function model = train_logistic_regression_classifier(training_data, validation_
                 % % get current lambda                
                 %lambda = ones(size(training_data.features,2),1) * lambda_values(lambda_idx) / 2;
                 %lambda(end) = 0;
-                lambda = lambda_values(lambda_idx);
+                lambda = lambda_values(lambda_idx) * ones(size(training_data.features,2),1);
                 w = L1General2_PSSgb(funObj, zeros(size(training_data.features,2),1), lambda, new_options);
 
                 % get current lambda                
@@ -114,7 +114,7 @@ function model = train_logistic_regression_classifier(training_data, validation_
                 % % get current lambda                
                 %lambda = ones(size(training_data.features,2),1) * lambda_values(lambda_idx);
                 %lambda(end) = 0;
-                lambda = lambda_values(lambda_idx);
+                lambda = lambda_values(lambda_idx) * ones(size(training_data.features,2),1);
                 w = minFunc(@penalizedL2, zeros(size(training_data.features,2),1), new_options, funObj, lambda); 
 
                 % get current lambda                

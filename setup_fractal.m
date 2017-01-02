@@ -27,12 +27,11 @@ addpath(genpath(fullfile(my_root_position, 'configuration_files'))) ;
 % Set up Mark Schmidt code
 cd('./external/markSchmidt');
 % compiling minFunc functions
-%if numel(dir(fullfile('minFunc', 'lbfgsProdC.mex*'))) == 0
-    fprintf('Compiling minFunc files...\n');
-    mex -outdir minFunc minFunc/mcholC.c
-    mex -outdir minFunc minFunc/lbfgsC.c
-    mex -outdir minFunc minFunc/lbfgsAddC.c
-    mex -outdir minFunc minFunc/lbfgsProdC.c
+fprintf('Compiling minFunc files...\n');
+mex -outdir minFunc minFunc/mcholC.c
+mex -outdir minFunc minFunc/lbfgsC.c
+mex -outdir minFunc minFunc/lbfgsAddC.c
+mex -outdir minFunc minFunc/lbfgsProdC.c
 %end
 % Go back to the main folder
 cd('..')

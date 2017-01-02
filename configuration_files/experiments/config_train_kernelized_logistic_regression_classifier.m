@@ -23,18 +23,20 @@ results_path      = '/Users/ignaciorlando/Documents/_fractal/_RESULTS';
 
 % Features to be used
 features_to_use = {...
-    %'fractal-dimension-vessels' ... % Fractal dimension from vessels
+    'fractal-dimension-vessels' ... % Fractal dimension from vessels
     'fractal-dimension-image' ... % Fractal dimension from image
-    %'fractal-dimension-skeleton' ... % Fractal dimension from skeleton
+    'fractal-dimension-skeleton' ... % Fractal dimension from skeleton
 };
 
 % Problem to solve
-problem_to_solve = 'dr-screening';
+%problem_to_solve = 'dr-screening';
 %problem_to_solve = 'need-to-referral';
+problem_to_solve = 'proliferative';
 
 % Classifier
 %classifier = 'l1-logistic-regression';
-classifier = 'l2-logistic-regression';
+%classifier = 'l2-logistic-regression';
+classifier = 'random-forest';
 %classifier = 'kernelized-logistic-regression';
 
 % Number of folds
