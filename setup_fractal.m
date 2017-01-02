@@ -16,9 +16,36 @@ addpath(genpath(fullfile(my_root_position, 'boxcount'))) ;
 addpath(genpath(fullfile(my_root_position, 'data_organization'))) ;
 addpath(genpath(fullfile(my_root_position, 'Util'))) ;
 addpath(genpath(fullfile(my_root_position, 'feature-extraction')));
+addpath(genpath(fullfile(my_root_position, 'external')));
+addpath(genpath(fullfile(my_root_position, 'experiments')));
+addpath(genpath(fullfile(my_root_position, 'machine-learning')));
+addpath(genpath(fullfile(my_root_position, 'dr-screening')));
 
 % add configuration files
 addpath(genpath(fullfile(my_root_position, 'configuration_files'))) ;
+
+% Set up Mark Schmidt code
+cd('./external/markSchmidt');
+% compiling minFunc functions
+%if numel(dir(fullfile('minFunc', 'lbfgsProdC.mex*'))) == 0
+    fprintf('Compiling minFunc files...\n');
+    mex -outdir minFunc minFunc/mcholC.c
+    mex -outdir minFunc minFunc/lbfgsC.c
+    mex -outdir minFunc minFunc/lbfgsAddC.c
+    mex -outdir minFunc minFunc/lbfgsProdC.c
+%end
+% Go back to the main folder
+cd('..')
+cd('..')
+
+% if VLFeat does not exist, show a warning message
+if exist(fullfile(my_root_position,'external','vlfeat','toolbox'), 'dir')==0
+    warning('We could not find VLFeat. Please, download the package from here: http://www.vlfeat.org/download.html');
+else
+    addpath(fullfile(my_root_position,'external','vlfeat','toolbox')) ; % code for ROC curves and stuff
+    % setup vl_feat
+    vl_setup;
+end
 
 clear
 clc
