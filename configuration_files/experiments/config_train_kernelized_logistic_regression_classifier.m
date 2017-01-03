@@ -40,4 +40,4 @@ classifier = 'random-forest';
 %classifier = 'kernelized-logistic-regression';
 
 % Number of folds
-num_of_folds = 10;
+num_of_folds = 30;

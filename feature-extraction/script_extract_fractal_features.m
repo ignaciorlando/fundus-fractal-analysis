@@ -22,12 +22,24 @@ switch extract_from
         output_tag = 'fractal-dimension-skeleton';    
         
     case 'image'
-        % prepare segmentations path
+        % prepare images path
         input_path = fullfile(dataset_path, dataset_name, 'images');
-        % retrieve segmentations names
+        % retrieve image names
         input_filenames = getMultipleImagesFileNames(input_path);
         % prepare output tag
         output_tag = 'fractal-dimension-image';
+        
+    case 'inpainted'
+        % prepare images path
+        input_path = fullfile(dataset_path, dataset_name, 'images');
+        % retrieve images names
+        input_filenames = getMultipleImagesFileNames(input_path);
+        % prepare segmentation path
+        segmentations_path = fullfile(dataset_path, dataset_name, 'segmentations');
+        % retrieve segmentation names
+        segmentation_filenames = getMultipleImagesFileNames(segmentations_path);
+        % prepare output tag
+        output_tag = 'fractal-dimension-inpainted';        
         
 end
 
@@ -61,6 +73,15 @@ for i = 1 : length(input_filenames)
         case 'image'
             % get only the green band
             current_input_for_fractal_analysis = current_input_for_fractal_analysis(:,:,2);
+            
+        case 'inpainted'
+            % get only the green band
+            current_input_for_fractal_analysis = current_input_for_fractal_analysis(:,:,2);
+            % read current segmentation
+            current_segmentation = imread(fullfile(segmentations_path, segmentation_filenames{i}));
+            % inpaint vessels
+            [current_input_for_fractal_analysis] = imageInpainting(current_input_for_fractal_analysis, current_segmentation);
+
             
     end
     

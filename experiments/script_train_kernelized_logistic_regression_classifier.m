@@ -57,7 +57,7 @@ xlim([0 1]); ylim([0 1]);
 
 % prepare a file tag
 if (is_cross_validation)
-    file_tag = strcat(problem_to_solve, '--cross-validation-', training_set_name, '--', classifier);
+    file_tag = strcat(problem_to_solve, '--cross-validation-', num2str(num_of_folds), '-', training_set_name, '--', classifier);
 else
     file_tag = strcat(problem_to_solve, '--training-', training_set_name, '--test-', test_set_name, '--', classifier);
 end

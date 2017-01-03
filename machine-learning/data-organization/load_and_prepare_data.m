@@ -14,7 +14,7 @@ function [folds, is_this_cross_validation, mus, stds] = load_and_prepare_data(tr
         data.features = load_features(training_data_path, features_list);
         
         % prepare data partition file (it might not exist)
-        partition_file = fullfile(training_data_path, 'partitions', 'cross-validation.mat');
+        partition_file = fullfile(training_data_path, 'partitions', strcat('cross-validation-', num2str(num_of_folds),'.mat'));
         % if the partition file do not exist, then lets prepare one and
         % save
         if (exist(partition_file, 'file')==0)
