@@ -16,7 +16,7 @@ training_data_path = fullfile(data_path, training_set_name);
 % prepare test data folder
 test_data_path = fullfile(data_path, test_set_name);
 % prepare results path
-results_path = fullfile(results_path, cell2mat(features_to_use));
+full_results_path = fullfile(results_path, cell2mat(features_to_use));
 
 % load and prepare data
 [folds, is_cross_validation, mus, stds] = load_and_prepare_data(training_data_path, test_data_path, features_to_use, problem_to_solve, num_of_folds);
@@ -62,6 +62,6 @@ else
     file_tag = strcat(problem_to_solve, '--training-', training_set_name, '--test-', test_set_name, '--', classifier);
 end
 % save results
-mkdir(results_path);
-save(fullfile(results_path, strcat(file_tag,'.mat')), 'mean_tpr', 'mean_fpr', 'mean_auc', 'std_auc', 'std_tpr', 'problem_to_solve', 'training_set_name', 'test_set_name');
-savefig(fullfile(results_path, strcat(file_tag, '.fig')));
+mkdir(full_results_path);
+save(fullfile(full_results_path, strcat(file_tag,'.mat')), 'mean_tpr', 'mean_fpr', 'mean_auc', 'std_auc', 'std_tpr', 'problem_to_solve', 'training_set_name', 'test_set_name');
+savefig(fullfile(full_results_path, strcat(file_tag, '.fig')));
