@@ -23,9 +23,10 @@ results_path      = '/Users/ignaciorlando/Documents/_fractal/_RESULTS';
 
 % Features to be used
 features_to_use = {...
-    'fractal-dimension-vessels' ... % Fractal dimension from vessels
-    'fractal-dimension-image' ... % Fractal dimension from image
-    'fractal-dimension-skeleton' ... % Fractal dimension from skeleton
+%     'fractal-dimension-vessels' ... % Fractal dimension from vessels
+%     'fractal-dimension-image' ... % Fractal dimension from image
+%     'fractal-dimension-skeleton' ... % Fractal dimension from skeleton
+    'fractal-dimension-inpainted' ... % Fractal dimension from inpainted images
 };
 
 % Problem to solve
@@ -34,10 +35,10 @@ features_to_use = {...
 problem_to_solve = 'proliferative';
 
 % Classifier
-%classifier = 'l1-logistic-regression';
+classifier = 'l1-logistic-regression';
 %classifier = 'l2-logistic-regression';
-classifier = 'random-forest';
+%classifier = 'random-forest';
 %classifier = 'kernelized-logistic-regression';
 
 % Number of folds
-num_of_folds = 30;
+num_of_folds = 10;
