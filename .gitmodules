@@ -1,0 +1,3 @@
+[submodule "external/fdim"]
+	path = external/fdim
+	url = https://github.com/ignaciorlando/fdim.git
