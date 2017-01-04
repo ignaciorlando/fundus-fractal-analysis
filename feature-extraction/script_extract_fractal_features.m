@@ -1,5 +1,11 @@
 
-config_extract_fractal_features;
+% SCRIPT_EXTRACT_FRACTAL_DIMENSIONS
+% -------------------------------------------------------------------------
+% This script extract different fractal dimensions from images processed
+% with different approaches.
+% -------------------------------------------------------------------------
+
+config_extract_fractal_dimensions;
 
 %% prepare folders
 
@@ -11,7 +17,7 @@ switch extract_from
         % retrieve segmentations names
         input_filenames = getMultipleImagesFileNames(input_path);
         % prepare output tag
-        output_tag = 'fractal-dimension-vessels';
+        output_tag = 'from-vessels';
         
     case 'skeleton' 
         % prepare segmentations path
@@ -19,7 +25,7 @@ switch extract_from
         % retrieve segmentations names
         input_filenames = getMultipleImagesFileNames(input_path);
         % prepare output tag
-        output_tag = 'fractal-dimension-skeleton';    
+        output_tag = 'from-skeleton';    
         
     case 'image'
         % prepare images path
@@ -27,7 +33,7 @@ switch extract_from
         % retrieve image names
         input_filenames = getMultipleImagesFileNames(input_path);
         % prepare output tag
-        output_tag = 'fractal-dimension-image';
+        output_tag = 'from-image';
         
     case 'inpainted'
         % prepare images path
@@ -39,14 +45,17 @@ switch extract_from
         % retrieve segmentation names
         segmentation_filenames = getMultipleImagesFileNames(segmentations_path);
         % prepare output tag
-        output_tag = 'fractal-dimension-inpainted';        
+        output_tag = 'from-inpainted';        
         
 end
 
 %% process each segmentation
 
-% initialize a matrix of features
-features = zeros(length(input_filenames), 11);
+% initialize arrays of fractal dimensions:
+
+n_cap = zeros(length(input_filenames), 11);
+n_inf = zeros(length(input_filenames), 11);
+n_corr = zeros(length(input_filenames), 11);
 
 % for each of the segmentations
 for i = 1 : length(input_filenames)
@@ -87,13 +96,31 @@ for i = 1 : length(input_filenames)
     
     % processing image...
     fprintf('Processing image %d/%d - %s\n', i, length(input_filenames), input_filenames{i});
-    % extract fractal features
-    fractal_features = boxcount(current_input_for_fractal_analysis);
-    features(i,:) = fractal_features(1:11);
+      
+    % extract fractal measurements
+    [current_n_cap, current_n_inf, current_n_corr, r] = compute_fractal_measurements(input_image);
+    
+    % assign current fractal measurements
+    n_cap(i, :) = current_n_cap(1:11);
+    n_inf(i, :) = current_n_inf(1:11);
+    n_corr(i, :) = current_n_corr(1:11);
     
 end
 
 %% save them to be used later
+
+% initialize the output folder
 output_folder = fullfile(dataset_path, dataset_name, 'features');
 mkdir(output_folder);
-save(fullfile(output_folder, strcat(output_tag, '.mat')), 'features');
+
+% create the feature alias for FDcap and save
+features = n_cap;
+save(fullfile(output_folder, strcat('box-fractal-measurement-', output_tag, '.mat')), 'features');
+
+% create the feature alias for FDinf and save
+features = n_inf;
+save(fullfile(output_folder, strcat('information-fractal-measurement-', output_tag, '.mat')), 'features');
+
+% create the feature alias for FDcor and save
+features = n_corr;
+save(fullfile(output_folder, strcat('correlation-fractal-measurement-', output_tag, '.mat')), 'features');
