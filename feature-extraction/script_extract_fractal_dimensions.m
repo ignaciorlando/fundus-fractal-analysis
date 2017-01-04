@@ -77,7 +77,7 @@ for i = 1 : length(input_filenames)
             % apply a closing to compensate error in the central reflex
             current_input_for_fractal_analysis = imclose(current_input_for_fractal_analysis, strel('disk',2,8));
             % extract skeleton
-            current_input_for_fractal_analysis = bwmorph(current_input_for_fractal_analysis, 'skel');
+            current_input_for_fractal_analysis = bwmorph(current_input_for_fractal_analysis, 'skel',Inf);
             
         case 'image'
             % get only the green band
