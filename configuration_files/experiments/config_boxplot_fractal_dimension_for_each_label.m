@@ -22,6 +22,6 @@ extract_from = 'skeleton';
 %extract_from = 'inpainted';
 
 % Fractal dimension 
-%fractal_dimension = 'box';
+fractal_dimension = 'box';
 %fractal_dimension = 'information';
-fractal_dimension = 'correlation';
+%fractal_dimension = 'correlation';

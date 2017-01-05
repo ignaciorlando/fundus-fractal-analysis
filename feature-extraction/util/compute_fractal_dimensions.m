@@ -27,25 +27,21 @@ function [FDcap, FDinf, FDcor] = compute_fractal_dimensions(input_image)
         
     % if the image is not logical...
     else
-    
-        istart = 2;
-        iend = length(r);
-        X = [ ones(iend-istart+1,1) r(istart:iend)'];
+        
+        X = cat(2, ones(size(r)), log(r));
 
         % estimate FDcap as the slope of the regression curve
-        logNL = -log(n_cap);
-        Y = logNL(istart:iend)';
+        Y = n_cap;
         [B,BINT,R,RINT, STATS] = regress(Y,X);
         FDcap = B(2);
 
         % estimate FDinf as the slope of the regression curve
-        Y = n_inf(istart:iend)';
+        Y = n_inf;
         [B,BINT,R,RINT, STATS] = regress(Y,X);
         FDinf = B(2);
 
         % estimate FDcor as the slope of the regression curve
-        logsqr = log(n_corr);
-        Y = logsqr(istart:iend)';
+        Y = n_corr;
         [B,BINT,R,RINT, STATS] = regress(Y,X);
         FDcor = B(2);
 
