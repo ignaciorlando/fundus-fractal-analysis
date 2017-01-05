@@ -76,7 +76,7 @@ end
 % pre-allocate arrays for box counting
 n_cap=zeros(1,p+1); % pre-allocate the number of box of size r
 n_inf=zeros(1,p); % pre-allocate the number of box of size r
-n_cor=zeros(1,p); % pre-allocate the number of box of size r
+n_corr=zeros(1,p); % pre-allocate the number of box of size r
 
 
 %------------------- 2D boxcount ---------------------%
@@ -135,10 +135,10 @@ n_cap = n_cap(end:-1:1);
 % reorganize n_inf
 n_inf = n_inf(end:-1:1);
 % reorganize n_corr
-n_corr = n_corr(end:-1:1);
+%n_corr = n_corr(end:-1:1);
 
 r = 2.^(0:p); % box size (1, 2, 4, 8...)
 
 if nargout==0
-    clear r n_cap n_inf
+    clear r n_cap n_inf n_corr
 end

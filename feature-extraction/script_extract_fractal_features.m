@@ -5,7 +5,7 @@
 % with different approaches.
 % -------------------------------------------------------------------------
 
-config_extract_fractal_dimensions;
+config_extract_fractal_features;
 
 %% prepare folders
 
@@ -98,7 +98,7 @@ for i = 1 : length(input_filenames)
     fprintf('Processing image %d/%d - %s\n', i, length(input_filenames), input_filenames{i});
       
     % extract fractal measurements
-    [current_n_cap, current_n_inf, current_n_corr, r] = compute_fractal_measurements(input_image);
+    [current_n_cap, current_n_inf, current_n_corr, r] = compute_fractal_measurements(current_input_for_fractal_analysis);
     
     % assign current fractal measurements
     n_cap(i, :) = current_n_cap(1:11);

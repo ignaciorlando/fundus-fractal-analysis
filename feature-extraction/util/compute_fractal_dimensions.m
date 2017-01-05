@@ -23,7 +23,7 @@ function [FDcap, FDinf, FDcor] = compute_fractal_dimensions(input_image)
         X = cat(2, ones(size(r(2:end)')), log(r(2:end)'));
         Y = log(n_corr');
         B = regress(Y,X);
-        FDcor = B(2); 
+        FDcor = -B(2); 
         
     % if the image is not logical...
     else
