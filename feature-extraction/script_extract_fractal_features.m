@@ -101,9 +101,9 @@ for i = 1 : length(input_filenames)
     [current_n_cap, current_n_inf, current_n_corr, r] = compute_fractal_measurements(current_input_for_fractal_analysis);
     
     % assign current fractal measurements
-    n_cap(i, :) = current_n_cap(1:11);
-    n_inf(i, :) = current_n_inf(1:11);
-    n_corr(i, :) = current_n_corr(1:11);
+    n_cap(i, 1:length(current_n_cap)) = current_n_cap;
+    n_inf(i, 1:length(current_n_inf)) = current_n_inf;
+    n_corr(i, 1:length(current_n_corr)) = current_n_corr;
     
 end
 

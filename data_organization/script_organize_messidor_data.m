@@ -7,6 +7,8 @@
 
 config_organize_messidor_data
 
+%% prepare folders
+
 % prepare paths from the original data set 
 main_messidor_folder = fullfile(root_folder, 'MESSIDOR', 'images');
 
@@ -14,11 +16,13 @@ main_messidor_folder = fullfile(root_folder, 'MESSIDOR', 'images');
 main_messidor_folder_output = fullfile(output_folder, 'MESSIDOR', 'images');
 mkdir(main_messidor_folder_output);
 
+%% copy files
+
 % copying images
 fprintf('Copying images...\n');
 
 % iterate on each of the hospital folders to copy all the files
-hospital_folders = getOnlyFolders(main_messidor_folder);
+ hospital_folders = getOnlyFolders(main_messidor_folder);
 for i = 1 : length(hospital_folders)
     
     % get all the subfolders from this hospital
@@ -50,12 +54,69 @@ for i = 1 : length(hospital_folders)
     
 end
 
+%% prepare labels
+
+fprintf('Preparing and organizing labels...\n');
+
+% retrieve all image names from XLS files, and both dr and macular edema
+% labels
+
+% initialize arrays
+all.image_filenames = {};
+all.dr_labels = [];
+all.macular_edema_labels = [];
+
+% for each hospital folder
+for i = 1 : length(hospital_folders)
+    
+    % get all the XLS files from this hospital
+    xls_filenames = dir(fullfile(main_messidor_folder, hospital_folders{i}, '*.xls'));
+    xls_filenames = {xls_filenames.name};
+    
+    % for each excel file
+    for j = 1 : length(xls_filenames)
+        % read the XLS file
+        [num,txt,~] = xlsread(fullfile(main_messidor_folder, hospital_folders{i}, xls_filenames{j}));
+        % retrieve image filenames
+        txt = txt(2:end,1);
+        % concatenate current labels and filenames in the all arrays
+        all.image_filenames = cat(1, all.image_filenames, txt);
+        all.dr_labels = cat(1, all.dr_labels, num(:,1));
+        all.macular_edema_labels = cat(1, all.macular_edema_labels, num(:,2));
+    end
+    
+end
+
+% now we have all labels... what we want is to assign each label to the
+% corresponding images as they are read from disk in the new folder
+
+% retrieve image
+image_names = getMultipleImagesFileNames(main_messidor_folder_output);
+
+% initialize the array of labels
+labels.dr = zeros(length(image_names), 1);
+labels.edema = zeros(length(image_names), 1);
+
+% for each of the images
+for i = 1 : length(image_names)
+    
+    % retrieve image idx
+    idx = find(strcmp(all.image_filenames, image_names{i}));
+    % assign labels
+    labels.dr(i) = all.dr_labels(idx);
+    labels.edema(i) = all.macular_edema_labels(idx);
+    
+end
+
+% save labels
+main_messidor_folder_labels_output = fullfile(output_folder, 'MESSIDOR', 'labels');
+mkdir(main_messidor_folder_labels_output);
+save(fullfile(main_messidor_folder_labels_output, 'labels.mat'), 'labels');
 
 %% now, generate fov masks
 root = fullfile(output_folder, 'MESSIDOR');
 threshold = 0.15;
 GenerateFOVMasks;
-
 
 %% crop every mask
 
