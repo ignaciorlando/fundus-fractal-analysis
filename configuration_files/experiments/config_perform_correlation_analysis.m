@@ -1,5 +1,5 @@
 
-% CONFIG_BOXPLOT_FRACTAL_DIMENSION_FOR_EACH_LABEL
+% CONFIG_PERFORM_CORRELATION_ANALYSIS
 % -------------------------------------------------------------------------
 % This script is called by script_boxplot_fractal_dimension_for_each_label 
 % to configure the environment before extracting features.
@@ -16,12 +16,10 @@ dataset_path = '/Users/ignaciorlando/Documents/_fractal';
 output_path = '/Users/ignaciorlando/Dropbox/RetinalImaging_2/Writing/fractals2017paper/experiments';
 
 % Fractal feature is going to be extracted from:
-%extract_from = 'vessels';
-extract_from = 'skeleton';
+extract_from = 'vessels';
+%extract_from = 'skeleton';
 %extract_from = 'image';
 %extract_from = 'inpainted';
 
-% Fractal dimension 
-%fractal_dimension = 'box';
-%fractal_dimension = 'information';
-fractal_dimension = 'correlation';
+% Fractal dimensions to analyze
+fractal_dimensions = { 'box', 'information', 'correlation' };
