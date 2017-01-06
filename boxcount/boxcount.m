@@ -134,8 +134,6 @@ end
 n_cap = n_cap(end:-1:1);
 % reorganize n_inf
 n_inf = n_inf(end:-1:1);
-% reorganize n_corr
-%n_corr = n_corr(end:-1:1);
 
 r = 2.^(0:p); % box size (1, 2, 4, 8...)
 

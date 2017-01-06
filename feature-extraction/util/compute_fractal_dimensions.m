@@ -31,7 +31,7 @@ function [FDcap, FDinf, FDcor] = compute_fractal_dimensions(input_image)
         X = cat(2, ones(size(r)), log(r));
 
         % estimate FDcap as the slope of the regression curve
-        Y = n_cap;
+        Y = -log(n_cap);
         [B,BINT,R,RINT, STATS] = regress(Y,X);
         FDcap = B(2);
 
@@ -41,7 +41,7 @@ function [FDcap, FDinf, FDcor] = compute_fractal_dimensions(input_image)
         FDinf = B(2);
 
         % estimate FDcor as the slope of the regression curve
-        Y = n_corr;
+        Y = log(n_corr);
         [B,BINT,R,RINT, STATS] = regress(Y,X);
         FDcor = B(2);
 
