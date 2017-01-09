@@ -68,7 +68,7 @@ end
 features_per_r = cell2mat(features_per_r);
 
 % plot the boxplot
-figure, boxplot(features_per_r, grouping_var);
+figure, boxplot(features_per_r, grouping_var, 'notch', 'on');
 % assign labels
 set(gca,'XTick',1:length(unique_labels),'XTickLabel',legend_array);
 ah=copyobj(gca,gcf);

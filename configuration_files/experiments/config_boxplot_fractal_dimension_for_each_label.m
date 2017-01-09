@@ -16,10 +16,11 @@ dataset_path = '/Users/ignaciorlando/Documents/_fractal';
 output_path = '/Users/ignaciorlando/Dropbox/RetinalImaging_2/Writing/fractals2017paper/experiments';
 
 % Fractal feature is going to be extracted from:
-%extract_from = 'vessels';
-%extract_from = 'skeleton';
 %extract_from = 'image';
-extract_from = 'inpainted';
+%extract_from = 'inpainted';
+%extract_from = 'vessels';
+extract_from = 'skeleton';
+
 
 % Fractal dimension 
 %fractal_dimension = 'box';
