@@ -41,7 +41,7 @@ for i = 1 : length(fractal_dimensions)
 end
 
 % now, compute correlation
-[correlation_matrix, p_values] = corrcoef(feature_array, 'alpha', 0.1)
+[correlation_matrix, p_values] = corr(feature_array)
 
 % also compute mutual information
 mutual_information_matrix = zeros(length(fractal_dimensions));

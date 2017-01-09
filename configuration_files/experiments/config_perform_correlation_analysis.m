@@ -18,8 +18,8 @@ output_path = '/Users/ignaciorlando/Dropbox/RetinalImaging_2/Writing/fractals201
 % Fractal feature is going to be extracted from:
 %extract_from = 'vessels';
 %extract_from = 'skeleton';
-%extract_from = 'image';
-extract_from = 'inpainted';
+extract_from = 'image';
+%extract_from = 'inpainted';
 
 % Fractal dimensions to analyze
 fractal_dimensions = { 'box', 'information', 'correlation' };
