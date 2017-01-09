@@ -14,6 +14,6 @@ dataset_path = '/Users/ignaciorlando/Documents/_fractal';
 
 % Fractal feature is going to be extracted from:
 %extract_from = 'vessels';
-extract_from = 'skeleton';
-%extract_from = 'image';
+%extract_from = 'skeleton';
+extract_from = 'image';
 %extract_from = 'inpainted';
