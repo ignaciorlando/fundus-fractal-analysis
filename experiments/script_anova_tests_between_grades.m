@@ -29,6 +29,9 @@ fprintf('\n----------------------------\n');
 disp(image_source);
 disp('----------------------------');
 
+% initialize an array of p-values
+p_values = zeros(length(list_of_fractal_dimensions), length(unique_grades)-1);
+
 % for each fractal dimension
 for i = 1 : length(list_of_fractal_dimensions)
     
@@ -51,18 +54,18 @@ for i = 1 : length(list_of_fractal_dimensions)
         current_labels = (labels.dr > R_i);
         
         % run anova test
-        [p, tbl, stats] = anova1(features, current_labels);
+        [p_values(i, r_i), tbl, stats] = anova1(features, current_labels);
         
         % print statistics on screen if p value is smaller than 0.05
-        if p < 0.05
+        if p_values(i, r_i) < 0.05
             fprintf('\tR%s < R%s \t\t Mean difference: %d \t p-value: %d\n', ...
                 mat2str(smaller_grades), mat2str(remaining_grades), ...
                 stats.means(1) - stats.means(2), ...
-                p);
+                p_values(i, r_i));
         else
             fprintf('\tR%s < R%s \t\t p-value is too big: %d\n', ...
                 mat2str(smaller_grades), mat2str(remaining_grades), ...
-                p);
+                p_values(i, r_i));
         end
         close all
         
