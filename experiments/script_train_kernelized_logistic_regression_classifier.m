@@ -11,6 +11,12 @@ end
 
 %% prepare folders, load data and organize
 
+% concatenate each feature to use with the dimension
+features_to_use_names = cell(size(features_to_use));
+for i = 1 : length(features_to_use)
+    features_to_use_names{i} = strcat(fractal_dimension, '-', features_to_use{i});
+end
+
 % prepare training data folder
 training_data_path = fullfile(data_path, training_set_name);
 % prepare test data folder
@@ -19,7 +25,7 @@ test_data_path = fullfile(data_path, test_set_name);
 full_results_path = fullfile(results_path, cell2mat(features_to_use));
 
 % load and prepare data
-[folds, is_cross_validation, mus, stds] = load_and_prepare_data(training_data_path, test_data_path, features_to_use, problem_to_solve, num_of_folds);
+[folds, is_cross_validation, mus, stds] = load_and_prepare_data(training_data_path, test_data_path, features_to_use_names, problem_to_solve, num_of_folds);
 
 %% evaluate features and classifier using this configuration
 
