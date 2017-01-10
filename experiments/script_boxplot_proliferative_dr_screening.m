@@ -1,11 +1,13 @@
 
-% SCRIPT_BOXPLOT_FRACTAL_DIMENSION_FOR_EACH_LABEL
+% SCRIPT_BOXPLOT_PROLIFERATIVE_DR_SCREENING
 % -------------------------------------------------------------------------
-
+% This script is used to plot boxplots for proliferative DR screening. It
+% plots a boxplot in which fractal dimensions are grouped in two
+% categories, R0-1-2 and R3.
 % -------------------------------------------------------------------------
 
 % configure the environment
-config_boxplot_fractal_dimension_for_each_label
+config_boxplot_proliferative_dr_screening;
 
 %% load labels and features
 
@@ -41,6 +43,7 @@ load(fullfile(dataset_path, dataset_name, 'labels', 'labels.mat'));
 %% retrieve features per each label
 
 % retrieve unique labels
+labels.dr = labels.dr > 2;
 unique_labels = unique(labels.dr);
 
 % initialize the array of features per label
@@ -48,7 +51,7 @@ features_per_r = cell(length(unique_labels), 1);
 % initialize an array of groups
 grouping_var = zeros(length(labels.dr), 1);
 % initialize an array of legends
-legend_array = cell(size(unique_labels));
+legend_array = {'R0-2', 'R3'};
 
 % for each of the labels
 iterator = 1;
@@ -60,9 +63,6 @@ for i = 1 : length(unique_labels)
     grouping_var(iterator : iterator + length(features_per_r{i}) - 1) = i;
     % update iterator
     iterator = iterator + length(features_per_r{i});
-    
-    % assign grade
-    legend_array{i} = ['R', num2str(i-1)];
     
 end
 
@@ -82,11 +82,11 @@ ylabel(fractal_dim_tag, 'Interpreter','LaTex');
 set(findall(gcf,'-property','FontSize'),'FontSize',14)
 
 % initialize output folder
-figure_output_folder = fullfile(output_path, 'box-plots');
+figure_output_folder = fullfile(output_path, dataset_name, 'box-plots-proliferative');
 mkdir(figure_output_folder);
 
 % save it
-%savefig(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag)));
+savefig(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag)));
 
 fig = gcf;
 fig.PaperPositionMode = 'auto';

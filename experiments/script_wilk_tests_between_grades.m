@@ -1,15 +1,14 @@
 
-% SCRIPT_ANOVA_TESTS_BETWEEN_GRADES
+% SCRIPT_WILK_TESTS_BETWEEN_GRADES
 % -------------------------------------------------------------------------
-% This script runs a bunch of ANOVA tests between different DR grades in
-% order to determine if fractal dimensions differ and are discriminative
-% enough.
+% This script runs a bunch of Wilcoxon rank sum tests between different DR 
+% grades in order to determine if fractal dimensions differ and are 
+% discriminative enough.
 % -------------------------------------------------------------------------
 
 close all
 clear all
-%clc
-config_anova_tests_between_grades
+config_wilk_tests_between_grades
 
 %% prepare paths and load labels
 
@@ -54,18 +53,17 @@ for i = 1 : length(list_of_fractal_dimensions)
         current_labels = (labels.dr > R_i);
         
         % run anova test
-        [p_values(i, r_i), tbl, stats] = anova1(features, current_labels);
+        [p_values(i, r_i), h] = ranksum(features(current_labels==0), features(current_labels==1));
         
         % print statistics on screen if p value is smaller than 0.05
-        if p_values(i, r_i) < 0.05
-            fprintf('\tR%s < R%s \t\t Mean difference: %d \t p-value: %d\n', ...
-                mat2str(smaller_grades), mat2str(remaining_grades), ...
-                stats.means(1) - stats.means(2), ...
-                p_values(i, r_i));
+        if h==1
+            fprintf('\tR%s < R%s \t\t p-value: %d\n', ...
+               mat2str(smaller_grades), mat2str(remaining_grades), ...
+               p_values(i, r_i));
         else
             fprintf('\tR%s < R%s \t\t p-value is too big: %d\n', ...
-                mat2str(smaller_grades), mat2str(remaining_grades), ...
-                p_values(i, r_i));
+               mat2str(smaller_grades), mat2str(remaining_grades), ...
+               p_values(i, r_i));
         end
         close all
         
