@@ -50,3 +50,9 @@ classifier = 'random-forest';
 
 % Number of folds
 num_of_folds = 10;
+
+% Save results
+save_results = true;
+
+% Show ROC
+show_roc = true;

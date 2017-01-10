@@ -29,9 +29,7 @@ list_of_fractal_dimensions = {...
 % Features to be used
 list_of_features_to_try = {...
     'fractal-dimension-vessels' ... % Fractal dimension from vessels
-    'fractal-dimension-image' ... % Fractal dimension from image
     'fractal-dimension-skeleton' ... % Fractal dimension from skeleton
-    'fractal-dimension-inpainted' ... % Fractal dimension from inpainted images
 };
 
 % Problems to solve
@@ -45,7 +43,6 @@ list_of_problems_to_try = {
 list_of_classifiers_to_try = {
     'l1-logistic-regression' ... % L1 logistic regression
     'l2-logistic-regression' ... % L2 logistic regression
-    'random-forest' ... % Random forest
 };
 
 % Number of folds

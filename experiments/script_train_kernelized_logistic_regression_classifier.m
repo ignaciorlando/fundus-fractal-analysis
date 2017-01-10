@@ -50,24 +50,29 @@ fprintf('--------------------------------------------\n');
 %% save and plot results
 
 % plot ROC curve
-figure
-if is_cross_validation
-    mseb(mean_fpr', mean_tpr', std_tpr');
-    legend(['AUC = ', num2str(mean_auc), '\pm', num2str(std_auc)], 'Location', 'southeast');
-else
-    plot(mean_fpr, mean_tpr, 'LineWidth', 2);
-    legend(['AUC = ', num2str(mean_auc)], 'Location', 'southeast');
+if (show_roc)
+    figure
+    if is_cross_validation
+        mseb(mean_fpr', mean_tpr', std_tpr');
+        legend(['AUC = ', num2str(mean_auc), '\pm', num2str(std_auc)], 'Location', 'southeast');
+    else
+        plot(mean_fpr, mean_tpr, 'LineWidth', 2);
+        legend(['AUC = ', num2str(mean_auc)], 'Location', 'southeast');
+    end
+    box on; grid on;
+    xlim([0 1]); ylim([0 1]);
 end
-box on; grid on;
-xlim([0 1]); ylim([0 1]);
 
-% prepare a file tag
-if (is_cross_validation)
-    file_tag = strcat(problem_to_solve, '--cross-validation-', num2str(num_of_folds), '-', training_set_name, '--', classifier);
-else
-    file_tag = strcat(problem_to_solve, '--training-', training_set_name, '--test-', test_set_name, '--', classifier);
+% it results have to be saved
+if (save_results)
+    % prepare a file tag
+    if (is_cross_validation)
+        file_tag = strcat(problem_to_solve, '--cross-validation-', num2str(num_of_folds), '-', training_set_name, '--', classifier);
+    else
+        file_tag = strcat(problem_to_solve, '--training-', training_set_name, '--test-', test_set_name, '--', classifier);
+    end
+    % save results
+    mkdir(full_results_path);
+    save(fullfile(full_results_path, strcat(file_tag,'.mat')), 'mean_tpr', 'mean_fpr', 'mean_auc', 'std_auc', 'std_tpr', 'problem_to_solve', 'training_set_name', 'test_set_name');
+    savefig(fullfile(full_results_path, strcat(file_tag, '.fig')));
 end
-% save results
-mkdir(full_results_path);
-save(fullfile(full_results_path, strcat(file_tag,'.mat')), 'mean_tpr', 'mean_fpr', 'mean_auc', 'std_auc', 'std_tpr', 'problem_to_solve', 'training_set_name', 'test_set_name');
-savefig(fullfile(full_results_path, strcat(file_tag, '.fig')));
