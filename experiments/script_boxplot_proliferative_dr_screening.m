@@ -72,21 +72,27 @@ end
 features_per_r = cell2mat(features_per_r);
 
 % plot the boxplot
-figure, boxplot(features_per_r, grouping_var, 'notch', 'on');
+figure;
+set(gcf, 'Position', [200 200 200 400]);
+boxplot(features_per_r, grouping_var, 'notch', 'on');
 set(gca,'ygrid','on');
 % assign labels
 set(gca,'XTick',1:length(unique_labels),'XTickLabel',legend_array);
-ah=copyobj(gca,gcf);
-set(ah,'YAxisLocation','right');
-ylabel(fractal_dim_tag, 'Interpreter','LaTex');
 set(findall(gcf,'-property','FontSize'),'FontSize',14)
+%ah=copyobj(gca,gcf);
+%set(ah,'YAxisLocation','right');
+ylabel(fractal_dim_tag, 'Interpreter','LaTex');
+
+
+
+
 
 % initialize output folder
-figure_output_folder = fullfile(output_path, dataset_name, 'box-plots-proliferative');
+figure_output_folder = fullfile(output_path, 'box-plots-proliferative');
 mkdir(figure_output_folder);
 
 % save it
-savefig(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag)));
+%savefig(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag)));
 
 fig = gcf;
 fig.PaperPositionMode = 'auto';
