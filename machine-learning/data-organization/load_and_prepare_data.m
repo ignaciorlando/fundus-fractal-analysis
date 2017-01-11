@@ -75,62 +75,6 @@ end
 
 
 
-function labels = load_labels(data_path, problem_to_solve)
-
-    % load labels
-    current_labels = load(fullfile(data_path, 'labels', 'labels.mat'));
-    
-    % reassign current_labels.labels.dr to the variable to return
-    labels = current_labels.labels.dr;
-    
-    % now, depending on the problem we want to solve, we will adapt the
-    % labels
-    switch problem_to_solve
-        case 'dr-screening'
-            % R0 = -1, R1-R2-R3 = 1
-            labels = 2 * (labels > 0) - 1;
-        case 'need-to-referral'
-            % R0,R1 = -1, R2-R3 = 1
-            labels = 2 * (labels > 1) - 1;
-        case 'proliferative'
-            % R0,R1,R2 = -1, R3 = 1
-            labels = 2 * (labels > 2) - 1;
-        otherwise
-            error(['problem_to_solve unknown. "dr-screening", "need-to-referral" or "proliferative" expected, ', problem_to_solve, ' found.']);
-    end
-
-end
-
-
-function features = load_features(data_path, features_list)
-
-    % initialize an empty matriz of features
-    features = [];
-    
-    % features_path will be data_path/features
-    features_path = fullfile(data_path, 'features');
-    
-    % for each of the features in the feature list
-    for i = 1 : length(features_list)
-        
-        % prepare current features path
-        current_features_file = fullfile(features_path, strcat(features_list{i}, '.mat'));
-        
-        % check if the file is available
-        if exist(current_features_file, 'file') == 0
-            % if the file does not exists...
-            error(['Cannot find ', features_list{i}, '.mat in folder ', features_path '. Make sure that the file was pre-computed before calling this function.'])
-        else
-            % load current features
-            current_features = load(current_features_file);
-            % concatenate them to the features array
-            features = cat(2, features, current_features.features);
-        end
-        
-    end
-
-end
-
 
 function folds = organize_features_in_folds(folds_indices, features, labels, is_cross_validation)
        
@@ -159,6 +103,8 @@ function folds = organize_features_in_folds(folds_indices, features, labels, is_
 end
 
 
+
+
 function [folds, mus_, stds_] = normalize_features(folds)
 
     % initialize arrays for mean and standard deviations values
@@ -180,5 +126,3 @@ function [folds, mus_, stds_] = normalize_features(folds)
     end
 
 end
-
-
