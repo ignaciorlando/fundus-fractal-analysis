@@ -1,5 +1,5 @@
 
-% SCRIPT_WILK_TESTS_BETWEEN_GRADES
+% SCRIPT_WILK_TESTS_FOR_GROUPED_GRADES
 % -------------------------------------------------------------------------
 % This script runs a bunch of Wilcoxon rank sum tests between different DR 
 % grades in order to determine if fractal dimensions differ and are 
@@ -8,7 +8,7 @@
 
 close all
 clear all
-config_wilk_tests_between_grades
+config_wilk_tests_for_grouped_grades
 
 %% prepare paths and load labels
 
@@ -44,32 +44,28 @@ for i = 1 : length(list_of_fractal_dimensions)
     % for each grade
     for r_i = 1 : length(unique_grades) - 1
         
-        % get source grade
+        % get grade to threshold
         R_i = unique_grades(r_i);
+        % get remaining grades
+        smaller_grades = unique_grades(unique_grades <= R_i);
+        remaining_grades = unique_grades(unique_grades > R_i);
+        % get current configuration of labels
+        current_labels = (labels.dr > R_i);
         
-        % for each grade from r_i
-        for r_j = r_i + 1 : length(unique_grades)
-            
-            % get the other grade
-            R_j = unique_grades(r_j);
-
-            % run anova test
-            [p_values(i, r_i), h] = ranksum(features(labels.dr==R_i), features(labels.dr==R_j));
-
-            % print statistics on screen if p value is smaller than 0.05
-            if h==1
-                fprintf('R%d vs R%d: H0 rejected, medians significantly different, p-value=%d\n', ...
-                   R_i, R_j, ...
-                   p_values(i, r_i));
-            else
-                fprintf('R%d vs R%d: Cannot reject H0, medians are not significantly different, p-value=%d\n', ...
-                   R_i, R_j, ...
-                   p_values(i, r_i));
-            end
-            close all
+        % run anova test
+        [p_values(i, r_i), h] = ranksum(features(current_labels==0), features(current_labels==1));
         
+        % print statistics on screen if p value is smaller than 0.05
+        if h==1
+            fprintf('\tR%s < R%s \t\t p-value: %d\n', ...
+               mat2str(smaller_grades), mat2str(remaining_grades), ...
+               p_values(i, r_i));
+        else
+            fprintf('\tR%s < R%s \t\t p-value is too big: %d\n', ...
+               mat2str(smaller_grades), mat2str(remaining_grades), ...
+               p_values(i, r_i));
         end
-        fprintf('\n');
+        close all
         
     end
     

@@ -73,7 +73,7 @@ features_per_r = cell2mat(features_per_r);
 
 % plot the boxplot
 figure;
-set(gcf, 'Position', [200 200 200 400]);
+set(gcf, 'Position', [200 200 200 300]);
 boxplot(features_per_r, grouping_var, 'notch', 'on');
 set(gca,'ygrid','on');
 % assign labels
