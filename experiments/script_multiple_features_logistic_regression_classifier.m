@@ -50,19 +50,41 @@ if (show_roc)
     current_figure = gcf;
     if strcmp(current_figure.Name, 'mean-roc-curves')
         hold on;
-        lineProps.col = {[1 0 0]};
     else
         current_figure = figure;
         current_figure.Name = 'mean-roc-curves';
-        lineProps.col = {[0 0 1]};
     end
-    if is_cross_validation
-        mseb(mean_fpr', mean_tpr', std_tpr', lineProps, 1);
-        legend(['AUC = ', num2str(mean_auc), '\pm', num2str(std_auc)], 'Location', 'southeast');
+    
+    if isempty(strfind(features_to_use_names{1},'dimension'))
+        line_style = '-';
     else
-        plot(mean_fpr, mean_tpr, 'LineWidth', 2);
-        legend(['AUC = ', num2str(mean_auc)], 'Location', 'southeast');
+        line_style = '--';
     end
+    
+    if strcmp(classifier,'l1-logistic-regression')
+        line_color = 'b';
+    else
+        line_color = 'r';
+    end
+    
+    plot(mean_fpr, mean_tpr, 'LineWidth', 2, 'Color', line_color, 'LineStyle', line_style);
+%     current_figure = gcf;
+%     if strcmp(current_figure.Name, 'mean-roc-curves')
+%         hold on;
+%         lineProps.col = {[0 0 1]};
+%         lineProps.style = '--';        
+%     else
+%         current_figure = figure;
+%         current_figure.Name = 'mean-roc-curves';
+%         lineProps.col = {[0 0 1]};
+%     end
+%     if is_cross_validation
+%         mseb(mean_fpr', mean_tpr', std_tpr', lineProps, 1);
+%         legend(['AUC = ', num2str(mean_auc), '\pm', num2str(std_auc)], 'Location', 'southeast');
+%     else
+%         plot(mean_fpr, mean_tpr, 'LineWidth', 2);
+%         legend(['AUC = ', num2str(mean_auc)], 'Location', 'southeast');
+%     end
     box on; grid on;
     xlim([0 1]); ylim([0 1]);
     hold off
