@@ -54,6 +54,7 @@ for i = 1 : length(hospital_folders)
     
 end
 
+
 %% prepare labels
 
 fprintf('Preparing and organizing labels...\n');
