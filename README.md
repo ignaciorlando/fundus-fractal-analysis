@@ -31,7 +31,7 @@ We make use of some external libraries in our code, namely:
 
 These two libraries are included by default in `fundus-fractal-analysis/external`.
 
-It will also require to download MESSIDOR data set, which is available [here](www.adcis.net/en/Download-Third-Party/Messidor.html). Vascular segmentations of this data set, obtained using this method, can be downloaded from [here](https://app.box.com/s/66y5hyvj705lir82ckt89wan693fdb4r).
+It will also require to download MESSIDOR data set, which is available [here](www.adcis.net/en/Download-Third-Party/Messidor.html). Vascular segmentations of this data set, obtained using [this method](https://github.com/ignaciorlando/fundus-vessel-segmentation-tbme), can be downloaded from [here](https://app.box.com/s/66y5hyvj705lir82ckt89wan693fdb4r).
 
 ### Installing
 
