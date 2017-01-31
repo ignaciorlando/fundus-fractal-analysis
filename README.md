@@ -1,12 +1,12 @@
 # Fractal features for proliferative diabetic retinopathy screening
 
-This code corresponds to our submission to *Physics in Medicine and Biology* with Hugo Luis Manterola and Alejandro Clausse, entitled **"On viability of combining fractal features with machine learning for proliferative diabetic retinopathy screening"**.
+This code corresponds to our submission to *Physics in Medicine and Biology* with Hugo Luis Manterola, Matthew B. Blaschko and Alejandro Clausse, entitled **"On viability of combining fractal features with machine learning for proliferative diabetic retinopathy screening"**.
 
 If you use this code in any publication, please include the following citation:
 ```
 	@article{orlando2017fractal,
 	  title={On viability of combining fractal features with machine learning for proliferative diabetic retinopathy screening},
-	  author={Orlando, Jos\'e Ignacio and Manterola, Hugo Luis and Clausse, Alejandro},
+	  author={Orlando, Jos\'e Ignacio and Manterola, Hugo Luis and Blaschko, Matthew B. Clausse, Alejandro},
 	  journal={Physics in Medicine and Biology},
 	  pages={Submitted},
 	  year={2017},

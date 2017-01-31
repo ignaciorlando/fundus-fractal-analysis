@@ -48,7 +48,7 @@ list_of_problems_to_try = {
 };
 list_of_problems_to_try_tags = {
     'DR screening' ...  % DR screening: R0 vs. R1, R2 and R3
-    'Need to referral' ... % Need to referral: R0 and R1 vs. R2 and R3
+    'Need for referral' ... % Need to referral: R0 and R1 vs. R2 and R3
     'Proliferative DR detection' ... % Proliferative screening: R0, R1 and R2 vs. R3
 };
 
