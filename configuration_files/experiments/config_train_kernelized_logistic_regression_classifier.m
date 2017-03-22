@@ -39,14 +39,13 @@ features_to_use = {...
 % };
 
 % Problem to solve
-problem_to_solve = 'dr-screening';
+%problem_to_solve = 'dr-screening';
 %problem_to_solve = 'need-to-referral';
-%problem_to_solve = 'proliferative';
+problem_to_solve = 'proliferative';
 
 % Classifier
 %classifier = 'l1-logistic-regression';
-%classifier = 'l2-logistic-regression';
-classifier = 'random-forest';
+classifier = 'l2-logistic-regression';
 
 % Number of folds
 num_of_folds = 10;

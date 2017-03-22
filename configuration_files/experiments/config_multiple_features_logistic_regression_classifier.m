@@ -19,7 +19,7 @@ root_path         = '/Users/ignaciorlando/Documents/_fractal';
 % Path where segmentations, features, etc are saved
 data_path         = '/Users/ignaciorlando/Documents/_fractal';
 % Results path
-results_path      = '/Users/ignaciorlando/Dropbox/RetinalImaging_2/Writing/fractals2017paper/7609863whhhhrnpdvsh/figures';
+results_path      = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal2017paper/7609863whhhhrnpdvsh/figures/without-spurius';
 
 
 % % Features to be used
@@ -58,6 +58,11 @@ features_to_use_names = {...
      'correlation-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
      'correlation-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
 };
+
+
+
+
+
 
 % Problem to solve
 %problem_to_solve = 'dr-screening';

@@ -5,6 +5,8 @@
 % with different approaches.
 % -------------------------------------------------------------------------
 
+warning('off','all');
+
 config_extract_fractal_dimensions;
 
 %% prepare folders
@@ -69,9 +71,7 @@ for i = 1 : length(input_filenames)
             % turn segmentation into a logical matrix
             current_input_for_fractal_analysis = current_input_for_fractal_analysis > 0;
             % post process it
-            [current_input_for_fractal_analysis] = preprocess_segmentation(current_input_for_fractal_analysis);
-            % apply a closing to compensate error in the central reflex
-            current_input_for_fractal_analysis = imclose(current_input_for_fractal_analysis, strel('disk',2,8));
+            [current_input_for_fractal_analysis] = preprocess_segmentation(current_input_for_fractal_analysis);pin
             
         case 'skeleton'
             % turn segmentation into a logical matrix
