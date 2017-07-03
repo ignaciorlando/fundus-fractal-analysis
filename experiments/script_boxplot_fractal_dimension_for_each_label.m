@@ -40,8 +40,26 @@ load(fullfile(dataset_path, dataset_name, 'labels', 'labels.mat'));
 
 %% retrieve features per each label
 
-% all the images labeled as having neovascularizations 
-labels.dr(labels.dr==max(labels.dr(:))) = max(labels.dr(:)) - 1;
+if groups_labels_by_risk
+    temporal_labels = labels.dr;
+    % R0 will be considered healthy
+    temporal_labels(labels.dr==0) = 0;
+    % R1-2 will be considered mild-moderate
+    temporal_labels(labels.dr==1) = 1;
+    temporal_labels(labels.dr==2) = 1;
+    % R3 will be considered severe
+    temporal_labels(labels.dr==3) = 2;
+    % R4 will be proliferative
+    temporal_labels(labels.dr>=4) = 3;
+    % all the images labeled as having neovascularizations 
+    labels.dr = temporal_labels;
+    clear temporal_labels
+    % initialize a risk names array
+    risk_names = {'Healthy', 'Mild-moderate', 'Severe', 'PDR'};
+else
+    % all the images labeled as having neovascularizations 
+    labels.dr(labels.dr==max(labels.dr(:))) = max(labels.dr(:)) - 1;
+end
 % retrieve unique labels
 unique_labels = unique(labels.dr);
 
@@ -64,7 +82,11 @@ for i = 1 : length(unique_labels)
     iterator = iterator + length(features_per_r{i});
     
     % assign grade
-    legend_array{i} = ['R', num2str(i-1)];
+    if groups_labels_by_risk
+        legend_array{i} = risk_names{i};
+    else
+        legend_array{i} = ['R', num2str(i-1)];
+    end
     
 end
 
@@ -87,11 +109,15 @@ set(findall(gcf,'-property','FontSize'),'FontSize',14)
 figure_output_folder = fullfile(output_path, 'box-plots');
 mkdir(figure_output_folder);
 
-% save it
-%savefig(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag)));
-
+% save figure as PDF and svg
 fig = gcf;
 fig.PaperPositionMode = 'auto';
 fig_pos = fig.PaperPosition;
 fig.PaperSize = [fig_pos(3) fig_pos(4)];
-print(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag, '.pdf')), '-dpdf');
+if groups_labels_by_risk
+    print(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-grouped-', input_tag, '.pdf')), '-dpdf');
+    print(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-grouped-', input_tag, '.svg')), '-dsvg');
+else
+    print(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag, '.pdf')), '-dpdf');
+    print(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag, '.svg')), '-dsvg');
+end
