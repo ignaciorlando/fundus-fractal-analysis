@@ -20,7 +20,7 @@ data_path         = '/Users/ignaciorlando/Documents/_fractal';
 % Results path
 results_path      = '/Users/ignaciorlando/Documents/_fractal/_RESULTS';
 % Output figures path
-output_fig_path   = '/Users/ignaciorlando/Dropbox/RetinalImaging_2/Writing/fractals2017paper/experiments';
+output_fig_path   = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal2017paper/experiments';
 
 % Fractal dimension
 fractal_dimensions = { ...
@@ -46,7 +46,7 @@ list_of_features_to_try_tags = {...
 };
 
 % Problems to solve
-problem_to_solve = 'proliferative'; % Proliferative screening: R0, R1 and R2 vs. R3
+problem_to_solve = 'proliferative'; % Proliferative screening: R0, R1, R2 and R3 vs. R4
 
 % Classifier
 classifiers_to_try = {...
