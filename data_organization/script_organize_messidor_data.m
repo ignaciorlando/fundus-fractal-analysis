@@ -59,6 +59,12 @@ end
 
 fprintf('Preparing and organizing labels...\n');
 
+% open the csv file from auxiliary-files/messidor-nv-labels.csv
+nv_annotations_file = tdfread(fullfile('auxiliary-files', 'messidor-nv-labels.csv'), ',');
+
+% recover all the filenames corresponding to images with R3
+high_risk_filenames = cellstr(nv_annotations_file.x0xEF0xBB0xBFImage_filename);
+
 % retrieve all image names from XLS files, and both dr and macular edema
 % labels
 
@@ -103,9 +109,31 @@ for i = 1 : length(image_names)
     
     % retrieve image idx
     idx = find(strcmp(all.image_filenames, image_names{i}));
-    % assign labels
-    labels.dr(i) = all.dr_labels(idx);
+    % assign edema label
     labels.edema(i) = all.macular_edema_labels(idx);
+    
+    % check if the image is a high risk image
+    if all.dr_labels(idx) == 3
+        
+        % find the index of the image in the list of high risk images
+        hr_idx = find(cellfun(@(s) ~isempty(strfind(image_names{i}, s)), high_risk_filenames));
+        % NVD = 1             --> R5
+        % NVE = 1 and NVD = 0 --> R4
+        % NVE = NVD = 0       --> R3
+        if (nv_annotations_file.NVD1(hr_idx)==1)
+            labels.dr(i) = 5;
+        elseif (nv_annotations_file.NVE1(hr_idx)==1)
+            labels.dr(i) = 4;
+        else
+            labels.dr(i) = 3;
+        end
+        
+    else
+        
+        % assign labels
+        labels.dr(i) = all.dr_labels(idx);
+        
+    end
     
 end
 

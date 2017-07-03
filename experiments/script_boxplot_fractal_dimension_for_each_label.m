@@ -40,6 +40,8 @@ load(fullfile(dataset_path, dataset_name, 'labels', 'labels.mat'));
 
 %% retrieve features per each label
 
+% all the images labeled as having neovascularizations 
+labels.dr(labels.dr==max(labels.dr(:))) = max(labels.dr(:)) - 1;
 % retrieve unique labels
 unique_labels = unique(labels.dr);
 

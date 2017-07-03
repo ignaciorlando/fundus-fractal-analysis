@@ -21,6 +21,6 @@ extract_from = 'skeleton';
 
 
 % Fractal dimension 
-%fractal_dimension = 'box';
+fractal_dimension = 'box';
 %fractal_dimension = 'information';
-fractal_dimension = 'correlation';
+%fractal_dimension = 'correlation';
