@@ -3,7 +3,7 @@
 % -------------------------------------------------------------------------
 % This script is used to plot boxplots for proliferative DR screening. It
 % plots a boxplot in which fractal dimensions are grouped in two
-% categories, R0-1-2 and R3.
+% categories, R0-1-2-3 and R4.
 % -------------------------------------------------------------------------
 
 % configure the environment
@@ -43,7 +43,7 @@ load(fullfile(dataset_path, dataset_name, 'labels', 'labels.mat'));
 %% retrieve features per each label
 
 % retrieve unique labels
-labels.dr = labels.dr > 2;
+labels.dr = labels.dr > 3;
 unique_labels = unique(labels.dr);
 
 % initialize the array of features per label
@@ -51,7 +51,7 @@ features_per_r = cell(length(unique_labels), 1);
 % initialize an array of groups
 grouping_var = zeros(length(labels.dr), 1);
 % initialize an array of legends
-legend_array = {'R0-2', 'R3'};
+legend_array = {'R0-3', 'R4'};
 
 % for each of the labels
 iterator = 1;
@@ -99,3 +99,4 @@ fig.PaperPositionMode = 'auto';
 fig_pos = fig.PaperPosition;
 fig.PaperSize = [fig_pos(3) fig_pos(4)];
 print(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag, '.pdf')), '-dpdf');
+print(fullfile(figure_output_folder, strcat(fractal_dimension, '-fractal-dimension-', input_tag, '.svg')), '-dsvg');

@@ -12,7 +12,7 @@ dataset_name = 'MESSIDOR';
 dataset_path = '/Users/ignaciorlando/Documents/_fractal';
 
 % Output path
-output_path = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal2017paper/7609863whhhhrnpdvsh/figures/without-spurius';
+output_path = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal2017paper/Results/figures';
 
 % Fractal feature is going to be extracted from:
 %extract_from = 'vessels';
