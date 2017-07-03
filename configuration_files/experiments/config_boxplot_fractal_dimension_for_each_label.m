@@ -16,15 +16,11 @@ dataset_path = '/Users/ignaciorlando/Documents/_fractal';
 output_path = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal2017paper/Results/figures';
 
 % Fractal feature is going to be extracted from:
-%extract_from = 'vessels';
-extract_from = 'skeleton';
+extract_from = 'vessels';
+%extract_from = 'skeleton';
 
 
 % Fractal dimension 
 %fractal_dimension = 'box';
 %fractal_dimension = 'information';
 fractal_dimension = 'correlation';
-
-% Decide whether to group labels for risk or not
-%groups_labels_by_risk = false;
-groups_labels_by_risk = true;
