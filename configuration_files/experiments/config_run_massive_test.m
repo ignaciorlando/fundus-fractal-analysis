@@ -28,15 +28,16 @@ list_of_fractal_dimensions = {...
 
 % Features to be used
 list_of_features_to_try = {...
-    'fractal-dimension-vessels' ... % Fractal dimension from vessels
-    'fractal-dimension-skeleton' ... % Fractal dimension from skeleton
+    'fractal-dimension-from-vessels' ... % Fractal dimension from vessels
+    'fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
 };
 
 % Problems to solve
 list_of_problems_to_try = {
-    'dr-screening' ...  % DR screening: R0 vs. R1, R2 and R3
-    'need-to-referral' ... % Need to referral: R0 and R1 vs. R2 and R3
-    'proliferative' ... % Proliferative screening: R0, R1 and R2 vs. R3
+    'dr-screening' ...  % DR screening: R0 vs. R1, R2, R3 and R4
+    'need-to-referral' ... % Need to referral: R0 and R1 vs. R2, R3 and R4
+    'proliferative' ... % Proliferative screening: R0, R1 and R2, R3 and R4
+    'od-neovascularizations' ... % OD - neovascularization
 };
 
 % Classifier
@@ -46,4 +47,4 @@ list_of_classifiers_to_try = {
 };
 
 % Number of folds
-num_of_folds = 10;
+num_of_folds = 5;
