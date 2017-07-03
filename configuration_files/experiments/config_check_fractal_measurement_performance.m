@@ -41,12 +41,13 @@ list_of_features_to_try = {...
 };
 
 list_of_features_to_try_tags = {...
-    'Vessel segmentation' ... % Fractal dimension from vessels
-    'Skeletonized vasculature' ... % Fractal dimension from skeleton
+    'Segm.' ... % Fractal dimension from vessels
+    'Skel.' ... % Fractal dimension from skeleton
 };
 
 % Problems to solve
-problem_to_solve = 'proliferative'; % Proliferative screening: R0, R1, R2 and R3 vs. R4
+%problem_to_solve = 'proliferative'; % Proliferative screening: R0, R1, R2 and R3 vs. R4
+problem_to_solve = 'od-neovascularizations';
 
 % Classifier
 classifiers_to_try = {...
@@ -59,4 +60,4 @@ classifiers_tags = {...
 };
 
 % Number of folds
-num_of_folds = 10;
+num_of_folds = 5;

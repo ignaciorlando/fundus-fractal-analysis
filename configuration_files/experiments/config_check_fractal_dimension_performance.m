@@ -36,8 +36,8 @@ list_of_features_to_try = {...
 };
 
 list_of_features_to_try_tags = {...
-    'Vessel segmentation' ... % Fractal dimension from vessels
-    'Skeletonized vasculature' ... % Fractal dimension from skeleton
+    'Segm.' ... % Fractal dimension from vessels
+    'Skel.' ... % Fractal dimension from skeleton
 };
 
 % Problems to solve
@@ -45,16 +45,18 @@ list_of_problems_to_try = {
     'dr-screening' ...  % DR screening: R0 vs. R1, R2, R3 and R4
     'need-to-referral' ... % Need to referral: R0 and R1 vs. R2, R3 and R4
     'proliferative' ... % Proliferative screening: R0, R1, R2 and R3 vs. R4
+    'od-neovascularizations' ... % OD neovascularizations
 };
 list_of_problems_to_try_tags = {
     'DR screening' ...  % DR screening: R0 vs. R1, R2, R3 and R4
     'Need for referral' ... % Need to referral: R0 and R1 vs. R2, R3 and R4
     'Proliferative DR detection' ... % Proliferative screening: R0, R1, R2 and R3 vs. R4
+    'OD neovascularizations' ... % OD neovascularizations
 };
 
 % Classifier
-classifier = 'l1-logistic-regression'; % L1 logistic regression
-%classifier = 'l2-logistic-regression'; % L2 logistic regression
+%classifier = 'l1-logistic-regression'; % L1 logistic regression
+classifier = 'l2-logistic-regression'; % L2 logistic regression
 
 % Number of folds
-num_of_folds = 10;
+num_of_folds = 5;

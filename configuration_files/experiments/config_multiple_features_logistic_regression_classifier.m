@@ -22,15 +22,15 @@ data_path         = '/Users/ignaciorlando/Documents/_fractal';
 results_path      = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal2017paper/Results';
 
 
-% Features to be used
-features_to_use_names = {...
-     'box-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
-     'box-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
-     'information-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
-     'information-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
-     'correlation-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
-     'correlation-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
-};
+% % Features to be used
+% features_to_use_names = {...
+%      'box-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
+%      'box-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
+%      'information-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
+%      'information-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
+%      'correlation-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
+%      'correlation-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
+% };
 
 
 % % Features to be used
@@ -59,6 +59,12 @@ features_to_use_names = {...
 %      'correlation-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
 %      'correlation-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
 % };
+
+% Features to be used
+features_to_use_names = {...
+     'information-fractal-measurement-from-skeleton' ... % Fractal measurements from skeleton
+};
+
 
 % Problem to solve
 %problem_to_solve = 'dr-screening';

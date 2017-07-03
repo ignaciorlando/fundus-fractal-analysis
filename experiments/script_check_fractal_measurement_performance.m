@@ -22,7 +22,7 @@ save_results = false;
 show_roc = false;
 
 % set up the output path
-output_fig_path = fullfile(output_fig_path, test_set_name, 'fractal-dimension-performance');
+output_fig_path = fullfile(output_fig_path, test_set_name, 'fractal-measurement-performance');
 
 %% run!
 
@@ -72,7 +72,7 @@ for jjj = 1 : length(classifiers_to_try)
     barweb(mean_aucs_to_plot(:,jjj), ...
            stds_aucs_to_plot(:,jjj), [], [], [], [], [], bone, [], {}, 2, 'plot');
     xlabel(classifiers_tags{jjj},'Interpreter','LaTex');
-    ylim([0.5 0.9]);
+    ylim([0.5 1]);
     ylabel('Area under the ROC curve','Interpreter','LaTex');
     if jjj==1
         h = legend(legends_to_plot, 'Location', 'southwest');
@@ -92,6 +92,6 @@ fig.PaperPositionMode = 'auto';
 fig_pos = fig.PaperPosition;
 fig.PaperSize = [fig_pos(3) fig_pos(4)];
 % output figure
-savefig(fullfile(output_fig_path, 'bar_chart_fractal_dimensions.fig'));
-print(fullfile(output_fig_path, 'bar_chart_fractal_dimensions.pdf'), '-dpdf');
+savefig(fullfile(output_fig_path, strcat(problem_to_solve, '-bar_chart_fractal_measurement.fig')));
+print(fullfile(output_fig_path, strcat(problem_to_solve, '-bar_chart_fractal_measurement.pdf')), '-dpdf');
 

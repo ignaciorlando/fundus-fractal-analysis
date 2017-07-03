@@ -87,7 +87,7 @@ for jjj = 1 : length(list_of_problems_to_try)
     barweb(aucs_to_plot(:,jjj), ...
            zeros(size(aucs_to_plot(:,jjj))), [], [], [], [], [], bone, [], {}, 2, 'plot');
     xlabel(list_of_problems_to_try_tags{jjj},'Interpreter','LaTex');
-    ylim([0.5 0.8]);
+    ylim([0.5 0.9]);
     ylabel('Area under the ROC curve','Interpreter','LaTex');
     if jjj==1
         h = legend(legends_to_plot, 'Location', 'northwest');
