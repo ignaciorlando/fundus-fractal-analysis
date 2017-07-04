@@ -37,6 +37,14 @@ mex -outdir minFunc minFunc/lbfgsProdC.c
 cd('..')
 cd('..')
 
+% Set up red lesion detection
+cd('./external/red-lesion-detection/');
+% compiling red lesion detection functions
+dr_setup
+% Go back to the main folder
+cd('..')
+cd('..')
+
 % if VLFeat does not exist, show a warning message
 if exist(fullfile(my_root_position,'external','vlfeat','toolbox'), 'dir')==0
     warning('We could not find VLFeat. Please, download the package from here: http://www.vlfeat.org/download.html');
