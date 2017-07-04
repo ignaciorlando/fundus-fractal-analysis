@@ -14,7 +14,7 @@ end
 %% prepare folders, load data and organize
 
 % prepare training data folder
-training_data_path =cd fullfile(data_path, training_set_name);
+training_data_path = fullfile(data_path, training_set_name);
 % prepare test data folder
 test_data_path = fullfile(data_path, test_set_name);
 % prepare results path
