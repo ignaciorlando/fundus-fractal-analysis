@@ -1,3 +1,6 @@
 [submodule "external/fdim"]
 	path = external/fdim
 	url = https://github.com/ignaciorlando/fdim.git
+[submodule "external/red-lesion-detection"]
+	path = external/red-lesion-detection
+	url = https://github.com/ignaciorlando/red-lesion-detection.git
