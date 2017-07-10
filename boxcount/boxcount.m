@@ -87,6 +87,7 @@ n_cap(p+1) = sum(c(:));
 M = sum(c(:));
 
 
+
 % we will iterate from the smallest grid size to the highest one
 for g=(p-1):-1:0
     

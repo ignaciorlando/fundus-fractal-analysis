@@ -1,14 +1,14 @@
 
-% SCRIPT_WILK_TESTS_FOR_GROUPED_GRADES
+% SCRIPT_KS_TESTS_FOR_GROUPED_GRADES
 % -------------------------------------------------------------------------
-% This script runs a bunch of Wilcoxon rank sum tests between different DR 
+% This script runs a bunch of Kolmogorov-Smirnov tests between different DR 
 % grades in order to determine if fractal dimensions differ and are 
 % discriminative enough.
 % -------------------------------------------------------------------------
 
 close all
 clear all
-config_wilk_tests_for_grouped_grades
+config_ks_tests_for_grouped_grades
 
 %% prepare paths and load labels
 
@@ -19,6 +19,7 @@ input_folder = fullfile(dataset_path, dataset_name, 'features');
 load(fullfile(dataset_path, dataset_name, 'labels', 'labels.mat'));
 
 % identify unique grades
+labels.dr(labels.dr>4) = 4;
 unique_grades = unique(labels.dr);
 
 %% performe multiple ANOVA tests
@@ -53,7 +54,8 @@ for i = 1 : length(list_of_fractal_dimensions)
         current_labels = (labels.dr > R_i);
         
         % run anova test
-        [p_values(i, r_i), h] = ranksum(features(current_labels==0), features(current_labels==1));
+        %[p_values(i, r_i), h] = ranksum(features(current_labels==0), features(current_labels==1));
+        [h, p_values(i, r_i)] = kstest2(features(current_labels==0), features(current_labels==1), 'alpha', 0.05);
         
         % print statistics on screen if p value is smaller than 0.05
         if h==1
