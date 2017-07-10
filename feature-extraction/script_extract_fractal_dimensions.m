@@ -51,7 +51,7 @@ for i = 1 : length(input_filenames)
             % turn segmentation into a logical matrix
             current_input_for_fractal_analysis = current_input_for_fractal_analysis > 0;
             % post process it
-            [current_input_for_fractal_analysis] = preprocess_segmentation(current_input_for_fractal_analysis);pin
+            [current_input_for_fractal_analysis] = preprocess_segmentation(current_input_for_fractal_analysis);
             
         case 'skeleton'
             % turn segmentation into a logical matrix

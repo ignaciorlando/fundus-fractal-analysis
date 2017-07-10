@@ -22,7 +22,7 @@ function [n_cap, n_inf, n_corr, r] = boxcount(c,varargin)
 % History:
 % 2006/11/22: v2.00, joined into a single file boxcountn (n=1,2,3).
 % 2008/07/09: v2.10, minor improvements
-% 2017/02/01: v3.00, by José Ignacio Orlando (CONICET, Argentina), support
+% 2017/02/01: v3.00, by Jos? Ignacio Orlando (CONICET, Argentina), support
 % for information and correlation dimension
 
 % control input argument
@@ -85,6 +85,7 @@ n_corr=zeros(1,p); % pre-allocate the number of box of size r
 n_cap(p+1) = sum(c(:));
 % n_inf must be undefined when r=0
 M = sum(c(:));
+
 
 % we will iterate from the smallest grid size to the highest one
 for g=(p-1):-1:0
