@@ -8,7 +8,7 @@
 
 close all
 clear all
-config_wilk_tests_between_grades
+config_ks_tests_between_grades
 
 %% prepare paths and load labels
 
@@ -19,6 +19,7 @@ input_folder = fullfile(dataset_path, dataset_name, 'features');
 load(fullfile(dataset_path, dataset_name, 'labels', 'labels.mat'));
 
 % identify unique grades
+labels.dr(labels.dr>4) = 4;
 unique_grades = unique(labels.dr);
 
 %% performe multiple ANOVA tests
@@ -54,15 +55,16 @@ for i = 1 : length(list_of_fractal_dimensions)
             R_j = unique_grades(r_j);
 
             % run anova test
-            [p_values(i, r_i), h] = ranksum(features(labels.dr==R_i), features(labels.dr==R_j));
+            %[p_values(i, r_i), h] = ranksum(features(labels.dr==R_i), features(labels.dr==R_j));
+            [h, p_values(i, r_i)] = kstest2(features(labels.dr==R_i), features(labels.dr==R_j), 'alpha', 0.05);
 
             % print statistics on screen if p value is smaller than 0.05
             if h==1
-                fprintf('R%d vs R%d: H0 rejected, medians significantly different, p-value=%d\n', ...
+                fprintf('R%d vs R%d: H0 rejected, medians significantly different, p-value=%0.1e\n', ...
                    R_i, R_j, ...
                    p_values(i, r_i));
             else
-                fprintf('R%d vs R%d: Cannot reject H0, medians are not significantly different, p-value=%d\n', ...
+                fprintf('R%d vs R%d: Cannot reject H0, medians are not significantly different, p-value=%0.1e\n', ...
                    R_i, R_j, ...
                    p_values(i, r_i));
             end
