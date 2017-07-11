@@ -44,6 +44,9 @@ dr_setup
 % Go back to the main folder
 cd('..')
 cd('..')
+rmpath(genpath('./external/red-lesion-detection/Scripts'))
+rmpath(genpath('./external/red-lesion-detection/configuration'))
+rmpath(genpath('./external/red-lesion-detection/default_configuration'))
 
 % if VLFeat does not exist, show a warning message
 if exist(fullfile(my_root_position,'external','vlfeat','toolbox'), 'dir')==0
