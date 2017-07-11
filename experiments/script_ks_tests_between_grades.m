@@ -1,7 +1,7 @@
 
-% SCRIPT_WILK_TESTS_BETWEEN_GRADES
+% SCRIPT_KS_TESTS_BETWEEN_GRADES
 % -------------------------------------------------------------------------
-% This script runs a bunch of Wilcoxon rank sum tests between different DR 
+% This script runs a bunch of Kolmogorv-Smirnov tests between different DR 
 % grades in order to determine if fractal dimensions differ and are 
 % discriminative enough.
 % -------------------------------------------------------------------------
