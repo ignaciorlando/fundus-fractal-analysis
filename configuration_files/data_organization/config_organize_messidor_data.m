@@ -8,8 +8,7 @@
 % Folder where MESSIDOR data set is. We assume that there is a folder
 % MESSIDOR/images inside this root folder, with the 3 folders from each
 % hospital inside.
-%root_folder = '/Users/ignaciorlando/Documents';
-root_folder = '/Users/ignaciorlando/Downloads';
+root_folder = '/Users/ignaciorlando/Documents/DATASETS';
 
 % Output folder where files will be saved
 output_folder = '/Users/ignaciorlando/Documents/_fractal';
