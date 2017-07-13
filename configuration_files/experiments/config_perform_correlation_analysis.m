@@ -16,8 +16,9 @@ dataset_path = '/Users/ignaciorlando/Documents/_fractal';
 output_path = '/Users/ignaciorlando/Dropbox/RetinalImaging_2/Writing/fractals2017paper/experiments';
 
 % Fractal feature is going to be extracted from:
-%extract_from = 'vessels';
-extract_from = 'skeleton';
+extract_from = {'vessels', 'skeleton'};
+latex_legends_extract_form = {'Vessel segmentations', 'Skeletonized vasculature'};
 
 % Fractal dimensions to analyze
 fractal_dimensions = { 'box', 'information', 'correlation' };
+latex_legends_dimensions = { '$D_B$', '$D_I$', '$D_C$' };
