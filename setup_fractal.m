@@ -37,6 +37,16 @@ mex -outdir minFunc minFunc/lbfgsProdC.c
 cd('..')
 cd('..')
 
+
+% if VLFeat does not exist, show a warning message
+if exist(fullfile(my_root_position,'external','vlfeat','toolbox'), 'dir')==0
+    warning('We could not find VLFeat. Please, download the package from here: http://www.vlfeat.org/download.html');
+else
+    addpath(fullfile(my_root_position,'external','vlfeat','toolbox')) ; % code for ROC curves and stuff
+    % setup vl_feat
+    vl_setup;
+end
+
 % Set up red lesion detection
 cd('./external/red-lesion-detection/');
 % compiling red lesion detection functions
@@ -49,14 +59,6 @@ rmpath(genpath('./external/red-lesion-detection/configuration'))
 rmpath(genpath('./external/red-lesion-detection/default_configuration'))
 rmpath(genpath('./external/red-lesion-detection/Util'))
 
-% if VLFeat does not exist, show a warning message
-if exist(fullfile(my_root_position,'external','vlfeat','toolbox'), 'dir')==0
-    warning('We could not find VLFeat. Please, download the package from here: http://www.vlfeat.org/download.html');
-else
-    addpath(fullfile(my_root_position,'external','vlfeat','toolbox')) ; % code for ROC curves and stuff
-    % setup vl_feat
-    vl_setup;
-end
 
 clear
 clc
