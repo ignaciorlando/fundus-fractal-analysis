@@ -1,21 +1,26 @@
 # Fractal features for proliferative diabetic retinopathy screening
 
-This code corresponds to our submission to *Physics in Medicine and Biology* with Hugo Luis Manterola, Matthew B. Blaschko and Alejandro Clausse, entitled **"On viability of combining fractal features with machine learning for proliferative diabetic retinopathy screening"**.
+This code corresponds to our submission to *Medical Physics* with Karel van Keer, João Barbosa Breda, Hugo Luis Manterola, Matthew B. Blaschko and Alejandro Clausse, entitled **"Proliferative Diabetic Retinopathy Characterization based on Fractal Features: Evaluation on a Publicly Available Data Set"**.
 
 If you use this code in any publication, please include the following citation:
 ```
 	@article{orlando2017fractal,
-	  title={On viability of combining fractal features with machine learning for proliferative diabetic retinopathy screening},
-	  author={Orlando, Jos\'e Ignacio and Manterola, Hugo Luis and Blaschko, Matthew B. Clausse, Alejandro},
-	  journal={Physics in Medicine and Biology},
+	  title={Proliferative Diabetic Retinopathy Characterization based on Fractal Features: Evaluation on a Publicly Available Data Set},
+	  author={Orlando, Jos\'e Ignacio and van Keer, Karel and Barbosa Breda, Jo\~ao Manterola, Hugo Luis and Blaschko, Matthew B. and Clausse, Alejandro},
+	  journal=Medical Physics},
 	  pages={Submitted},
 	  year={2017},
-	  publisher={IOP Publishing}
+	  publisher={Wiley}
 	}
 ```
 ##Abstract
 
-Diabetic retinopathy (DR) is one of the most spread causes of preventable blindness in the World. The most dangerous stage of this condition is known as proliferative DR, in which vision loss risk is high and treatments are considerable less effective. Fractal dimensions have been extensively explored as biomarkers of several ophthalmological and system diseases. However, current literature shows contradictory conclusions with respect to the viability of using fractal dimensions for DR screening. Moreover, recent studies have suggested to avoid their usage due to their numerical instability with respect to different imaging conditions. To the best of our knowledge, however, no study on how machine learning techniques might improve the discriminative power of fractal dimensions or measurements is currently available. In this paper we present a comprehensive analysis of the viability of using 3 reference fractal dimensions and measurements--box, information and correlation--as input features for training regularized logistic regression classifiers. Our results on a publicly available data set of 1200 images indicate that combining both fractal measurements and dimensions as features for a regularized logistic regression classifier is suitable for proliferative DR screening, reporting an area under the receiver-operating characteristic curve of 0.8521.
+*Purpose:* Diabetic retinopathy (DR) is one of the most widespread causes of preventable blindness in the world. The most dangerous stage of this condition is proliferative DR (PDR), in which the risk of vision loss is high and treatments are less efective. Fractal features of
+the retinal vasculature have been previously explored as potential biomarkers of DR, yet the current literature is inconclusive with respect to their correlation with PDR. In this study we experimentally assess their discrimination ability to recognize PDR cases.
+*Methods:* A statistical analysis of the viability of using three reference fractal characterization schemes--namely box, information and correlation dimensions--to identify patients with PDR is presented. These descriptors are also evaluated as input features for training L1 and
+L2 regularized logistic regression classifiers, to estimate their performance.
+*Results:* Our results on MESSIDOR, a public data set of 1200 fundus photographs, indicate that patients with PDR are more likely to exhibit a higher fractal dimension than healthy subjects or patients with mild levels of DR. Moreover, a supervised classifier trained with both fractal measurements and red lesion based features reports an area under the ROC curve of 0.9291 for PDR screening and 0.9574 for detecting patients with optic disc neovascularization.
+*Conclusions:* The fractal dimension of the vasculature increases with the level of DR. Furthermore, PDR screening using multiscale fractal measurements is more feasible than using their derived fractal dimensions. Code and further resources are provided in this webpage.
 
 
 ## Getting Started
