@@ -15,7 +15,7 @@ If you use this code in any publication, please include the following citation:
 ```
 ##Abstract
 
-*Purpose:* Diabetic retinopathy (DR) is one of the most widespread causes of preventable blindness in the world. The most dangerous stage of this condition is proliferative DR (PDR), in which the risk of vision loss is high and treatments are less efective. Fractal features of
+*Purpose:* Diabetic retinopathy (DR) is one of the most widespread causes of preventable blindness in the world. The most dangerous stage of this condition is proliferative DR (PDR), in which the risk of vision loss is high and treatments are less effective. Fractal features of
 the retinal vasculature have been previously explored as potential biomarkers of DR, yet the current literature is inconclusive with respect to their correlation with PDR. In this study we experimentally assess their discrimination ability to recognize PDR cases.
 *Methods:* A statistical analysis of the viability of using three reference fractal characterization schemes--namely box, information and correlation dimensions--to identify patients with PDR is presented. These descriptors are also evaluated as input features for training L1 and
 L2 regularized logistic regression classifiers, to estimate their performance.
@@ -33,6 +33,7 @@ We make use of some external libraries in our code, namely:
 
  - VLFeat: for efficient ROC curve computation. [[link]](https://github.com/vlfeat/vlfeat)
  - Mark Schmidt implementation of regularized logistic regression. [[link]](https://www.cs.ubc.ca/~schmidtm/Software/code.html)
+ - Our red lesion detector. [[link]](https://github.com/ignaciorlando/red-lesion-detection)
 
 These two libraries are included by default in `fundus-fractal-analysis/external`.
 

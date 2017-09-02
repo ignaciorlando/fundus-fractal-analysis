@@ -10,17 +10,14 @@ dataset_names = {...
     'MESSIDOR', ...
 };
 
-scale_values = [ ...
-    0.81875, ...     % MESSIDOR
-];
-
-
 % folder where images, masks and stuff are stored
-image_folder = 'C:\_diabetic_retinopathy';
+image_folder = '/Users/ignaciorlando/Documents/_fractal';
 
 % folder where vessel segmentations will be saved
-output_segmentations_folder = 'C:\_diabetic_retinopathy';
+output_segmentations_folder = '/Users/ignaciorlando/Documents/_fractal';
 
 % The segmentation model has to be located in this folder
-modelLocation = 'C:\_diabetic_retinopathy\segmentation-model';
+modelLocation = '/Users/ignaciorlando/Documents/_fractal/segmentation-model';
 
+% Size of the vessel_of_interest in DRIVE
+vessel_of_interest = 7.0667;

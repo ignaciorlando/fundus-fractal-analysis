@@ -11,6 +11,8 @@ if exist('is_configured', 'var')==0
     config_multiple_features_logistic_regression_classifier;
 end
 
+custom = exist('custom_legend', 'var')~=0;
+
 %% prepare folders, load data and organize
 
 % prepare training data folder
@@ -47,6 +49,7 @@ fprintf('--------------------------------------------\n');
 
 % plot ROC curve
 if (show_roc)
+    
     current_figure = gcf;
     if strcmp(current_figure.Name, 'mean-roc-curves')
         hold on;
@@ -56,29 +59,62 @@ if (show_roc)
         my_legends = {};
     end
     
-    if isempty(strfind(features_to_use_names{1},'dimension')) && ~isempty(strfind(features_to_use_names{end},'dimension'))
-        line_style = '-';
-        current_legend = ' - All';
-    elseif isempty(strfind(features_to_use_names{1},'dimension')) && isempty(strfind(features_to_use_names{end},'dimension'))
-        line_style = '--';
-        current_legend = ' - Measurements';
+    
+    
+    if ~isempty(strfind(features_to_use_names{1},'red-lesion'))
+        if ~isempty(strfind(features_to_use_names{end},'red-lesion'))
+            line_width = 1.5;
+            line_color = [93, 147, 191] / 255;          % blue
+        else
+            line_width = 2;
+            if isempty(strfind(features_to_use_names{end},'information-fractal-measurement-from-skeleton'))
+                line_color = [233, 72, 74] / 255;           % red
+            else
+                line_color = [0, 0, 255] / 255;           % more blue
+            end
+        end
     else
-        line_style = ':';
-        current_legend = ' - Dimensions';
+        line_width = 1.5;
+        if isempty(strfind(features_to_use_names{1},'dimension')) && ~isempty(strfind(features_to_use_names{end},'dimension'))
+            line_color = [112, 190, 110] / 255;         % green
+        elseif isempty(strfind(features_to_use_names{1},'dimension')) && isempty(strfind(features_to_use_names{end},'dimension'))
+            line_color = [173, 113, 179] / 255;         % violet
+        else
+            line_color = [255, 152, 52] / 255;          % orange
+        end
     end
     
-    if strcmp(classifier,'l1-logistic-regression')
-        line_color = 'b';
-        current_legend = ['$\ell_1$ ', current_legend];
+    
+    if custom
+        current_legend = [' - ', custom_legend];
     else
-        line_color = 'r';
-        current_legend = ['$\ell_2$ ', current_legend];
+        if isempty(strfind(features_to_use_names{1},'dimension')) && ~isempty(strfind(features_to_use_names{end},'dimension'))
+            current_legend = ' - All';
+        elseif isempty(strfind(features_to_use_names{1},'dimension')) && isempty(strfind(features_to_use_names{end},'dimension'))
+            current_legend = ' - Measurements';
+        else
+            current_legend = ' - Dimensions';
+        end
     end
+    
+    
+    if ~isempty(strfind(features_to_use_names{1},'red-lesion')) && ~isempty(strfind(features_to_use_names{end},'red-lesion')) 
+        line_style = '-';
+    else
+        if strcmp(classifier,'l1-logistic-regression')
+            line_style = '-';
+            current_legend = ['$\ell_1$ ', current_legend];
+        else
+            line_style = '--';
+            current_legend = ['$\ell_2$ ', current_legend];
+        end
+    end
+    
     
     current_legend = [current_legend, ' - AUC=', num2str(mean_auc,'%.4f'), ' $\pm$ ', num2str(std_auc,'%.2f')];
     my_legends = cat(1, my_legends, current_legend);
     
-    plot(mean_fpr, mean_tpr, 'LineWidth', 2, 'Color', line_color, 'LineStyle', line_style);
+    plot(mean_fpr, mean_tpr, 'LineWidth', line_width, 'Color', line_color, 'LineStyle', line_style);
     box on; grid on;
     xlim([0 1]); ylim([0 1]);
     legend(my_legends, 'Location', 'southeast','Interpreter','LaTex');

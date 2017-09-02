@@ -58,7 +58,7 @@ for jjj = 1 : length(classifiers_to_try)
             
             % save results
             mean_aucs_to_plot(counter, jjj) = mean_auc;
-            stds_aucs_to_plot(counter, jjj) = std_auc;
+            stds_aucs_to_plot(counter, jjj) = std_auc / sqrt(length(folds));
             
             % add the legend
             legends_to_plot{counter} = [list_fractal_dimensions_tags{kkk}, ' - ', list_of_features_to_try_tags{iii}];

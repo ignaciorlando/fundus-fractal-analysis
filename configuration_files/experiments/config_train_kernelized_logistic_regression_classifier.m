@@ -27,16 +27,15 @@ fractal_dimension = 'information';
 %fractal_dimension = 'correlation';
 
 % Features to be used
-features_to_use = {...
-     'fractal-dimension-from-vessels' ... % Fractal dimension from vessels
-     'fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
-};
 % features_to_use = {...
 %      'fractal-dimension-from-vessels' ... % Fractal dimension from vessels
-%      'fractal-dimension-from-image' ... % Fractal dimension from image
 %      'fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
-%      'fractal-dimension-from-inpainted' ... % Fractal dimension from inpainted images
 % };
+% features_to_use = {...
+%      'fractal-dimension-from-vessels' ... % Fractal dimension from vessels
+%      'fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
+% };
+
 
 % Problem to solve
 %problem_to_solve = 'dr-screening';
@@ -44,11 +43,11 @@ features_to_use = {...
 problem_to_solve = 'proliferative';
 
 % Classifier
-%classifier = 'l1-logistic-regression';
-classifier = 'l2-logistic-regression';
+classifier = 'l1-logistic-regression';
+%classifier = 'l2-logistic-regression';
 
 % Number of folds
-num_of_folds = 10;
+num_of_folds = 5;
 
 % Save results
 save_results = true;

@@ -84,8 +84,9 @@ for jjj = 1 : length(list_of_problems_to_try)
     
     % bar chart
     subplot(1,length(list_of_problems_to_try),jjj);
-    barweb(aucs_to_plot(:,jjj), ...
-           zeros(size(aucs_to_plot(:,jjj))), [], [], [], [], [], bone, [], {}, 2, 'plot');
+      
+    barweb(aucs_to_plot(:,jjj), zeros(size(aucs_to_plot(:,jjj))), [], [], [], [], [], bone, [], {}, 2, 'plot');
+    
     xlabel(list_of_problems_to_try_tags{jjj},'Interpreter','LaTex');
     ylim([0.5 0.9]);
     ylabel('Area under the ROC curve','Interpreter','LaTex');
@@ -98,6 +99,8 @@ for jjj = 1 : length(list_of_problems_to_try)
     set(gca,'xtick',[]);
     
 end
+
+
 
 % create output folder
 mkdir(output_fig_path);

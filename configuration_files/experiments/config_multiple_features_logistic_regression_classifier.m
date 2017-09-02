@@ -22,6 +22,7 @@ data_path         = '/Users/ignaciorlando/Documents/_fractal';
 results_path      = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal2017paper/Results';
 
 
+
 % % Features to be used
 % features_to_use_names = {...
 %      'box-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
@@ -31,7 +32,6 @@ results_path      = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal
 %      'correlation-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
 %      'correlation-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
 % };
-
 
 % % Features to be used
 % features_to_use_names = {...
@@ -43,7 +43,6 @@ results_path      = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal
 %      'correlation-fractal-measurement-from-skeleton' ... % Fractal measurements from skeleton
 % };
 
-
 % % Features to be used
 % features_to_use_names = {...
 %      'box-fractal-measurement-from-vessels' ... % Fractal measurements from vessels
@@ -60,8 +59,37 @@ results_path      = '/Users/ignaciorlando/Dropbox/RetinalImaging/Writing/fractal
 %      'correlation-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
 % };
 
-% Features to be used
+% % Indicate if it is a custom evaluation (comment if not)
+% custom_legend = 'Red lesion probability';
+% % Custom features to use
+% features_to_use_names = {...
+%      'red-lesion-probability' ... % Fractal measurements from skeleton
+% };
+
+% % Indicate if it is a custom evaluation (comment if not)
+% custom_legend = 'Red lesion and all fractal features';
+% % Custom features to use
+% features_to_use_names = {...
+%      'red-lesion-probability' ... % Fractal measurements from skeleton
+%      'box-fractal-measurement-from-vessels' ... % Fractal measurements from vessels
+%      'box-fractal-measurement-from-skeleton' ... % Fractal measurements from skeleton
+%      'information-fractal-measurement-from-vessels' ... % Fractal measurements from vessels
+%      'information-fractal-measurement-from-skeleton' ... % Fractal measurements from skeleton
+%      'correlation-fractal-measurement-from-vessels' ... % Fractal measurements from vessels
+%      'correlation-fractal-measurement-from-skeleton' ... % Fractal measurements from skeleton
+%      'box-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
+%      'box-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
+%      'information-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
+%      'information-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
+%      'correlation-fractal-dimension-from-vessels' ... % Fractal dimension from vessels
+%      'correlation-fractal-dimension-from-skeleton' ... % Fractal dimension from skeleton
+% };
+
+% Indicate if it is a custom evaluation (comment if not)
+custom_legend = 'Red lesion and $H(r)$ from skel. features';
+% Custom features to use
 features_to_use_names = {...
+     'red-lesion-probability' ... % Fractal measurements from skeleton
      'information-fractal-measurement-from-skeleton' ... % Fractal measurements from skeleton
 };
 
@@ -69,8 +97,8 @@ features_to_use_names = {...
 % Problem to solve
 %problem_to_solve = 'dr-screening';
 %problem_to_solve = 'need-to-referral';
-%problem_to_solve = 'proliferative';
-problem_to_solve = 'od-neovascularizations';
+problem_to_solve = 'proliferative';
+%problem_to_solve = 'od-neovascularizations';
 
 % Classifier
 %classifier = 'l1-logistic-regression';
