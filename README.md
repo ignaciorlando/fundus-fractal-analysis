@@ -15,7 +15,7 @@ If you use this code in any publication, please include the following citation:
 
 If you use our code for red lesion detection, please cite the paper indicated in  [https://github.com/ignaciorlando/red-lesion-detection](https://github.com/ignaciorlando/red-lesion-detection).
 
-##Abstract
+## Abstract
 
 *Purpose:* Diabetic retinopathy (DR) is one of the most widespread causes of preventable blindness in the world. The most dangerous stage of this condition is proliferative DR (PDR), in which the risk of vision loss is high and treatments are less effective. Fractal features of
 the retinal vasculature have been previously explored as potential biomarkers of DR, yet the current literature is inconclusive with respect to their correlation with PDR. In this study we experimentally assess their discrimination ability to recognize PDR cases.
